@@ -1,4 +1,5 @@
 const mongoose   = require("mongoose");
+const Post = require("./post");
 
 const userSchema = new mongoose.Schema({
     firstName:{
@@ -48,7 +49,11 @@ const userSchema = new mongoose.Schema({
     emialVerified:{
         type:Boolean,
         
-    }
+    },
+    post:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Post"
+    }]
 })
 
 module.exports = mongoose.model("User",userSchema);
